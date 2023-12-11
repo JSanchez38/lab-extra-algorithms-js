@@ -146,6 +146,7 @@ function scrambleIt(word, positions) {
  * @returns {number}  
  */
 function reverseNumber(number) {
+  //invertir el bucle y parseInt()
 
 }
 
@@ -164,7 +165,7 @@ function reverseNumber(number) {
  * @returns {boolean}  
  */
 function isMisspelled(original, sample) {
-
+ //includes()
 }
 
 /**
@@ -174,6 +175,6 @@ function isMisspelled(original, sample) {
  * @returns {string}  
  */
 function capitalize(sentence) {
-
+//
 }
 
