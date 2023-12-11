@@ -94,7 +94,7 @@ function indexOf(elements, element) {
  * @param {number | string} element 
  * @returns {boolean}
  */
-function exists(elements, element) {
+  function exists(elements, element) {
   let result = false;
   let i = 0;
   while (i < element.length && !result) {
@@ -165,7 +165,7 @@ function reverseNumber(number) {
  * @returns {boolean}  
  */
 function isMisspelled(original, sample) {
- //includes()
+
 }
 
 /**
