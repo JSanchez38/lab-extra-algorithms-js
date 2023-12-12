@@ -146,8 +146,13 @@ function scrambleIt(word, positions) {
  * @returns {number}  
  */
 function reverseNumber(number) {
-  //invertir el bucle y parseInt()
 
+  let result = []
+  
+  for (let i = number.length - 1; i >= 0 ; i--) {
+    result.push(number[i])
+  }
+  return result
 }
 
 /**
