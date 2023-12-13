@@ -147,13 +147,15 @@ function scrambleIt(word, positions) {
  */
 function reverseNumber(number) {
 
-  let result = []
+  let result = ""
   
   for (let i = number.length - 1; i >= 0 ; i--) {
-    result.push(number[i])
+    result += number[i]
+    
   }
   return result
 }
+
 
 /**
  * 
@@ -179,7 +181,69 @@ function isMisspelled(original, sample) {
  * @param {*} sentence 
  * @returns {string}  
  */
-function capitalize(sentence) {
-//
-}
 
+function capitalize(sentence) {
+  let noSpaces = sentence.split(" ")
+  let result = ""
+  
+  for (let i = 0; i < noSpaces.length; i++) {
+    const word = noSpaces[i]
+    
+    if (word.length < 4) {
+      result += word + " "
+    } else if (word.length >= 4) {
+      result += word[0].toUpperCase() + word.slice(1) + " "
+    }
+  }
+  return result.trim()
+ }
+
+
+//si una palabra contiene toda las vocales
+
+function containsAllVowels(words) {
+  const vowels = ["a", "e", "i", "o", "u"]
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i]
+
+    if (!vowels.includes(word)) {
+      return false
+    } else {
+      return true
+    }
+  }
+}
+console.log(containsAllVowels("ealliuo"))
+
+/**
+ * Count how many sheep there are in array (ignoring cases).
+ * If there are a wolf in the array then a poor sheep will die, but if there are a dog then the wolf can't kill a sheep.
+ * ['sheep', 'wolf', 'dog', 'ShEep'] => 2
+ * ['sheep', 'wolf', 'wolf', 'dog'] => 1
+ * ['wolf', 'dog'] => 0
+ * [] => 0
+ * ['shep'] => 0
+ * ['SHEEP', 'sheep', 'dog'] => 2
+ * @param {[string]} animals 
+ * @returns {number}
+ */
+function countSheep(animals) {
+  
+  let count = 0
+
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i]
+
+    if (animal === "sheep") {
+      count++
+    } else if (animal === "wolf") {
+      count--
+    } else if (animal === "dog" && animal === "wolf") {
+      return count
+    } else {
+      return count
+    }
+  }
+  return count
+}
