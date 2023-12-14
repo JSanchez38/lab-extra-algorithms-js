@@ -119,6 +119,13 @@ function indexOf(elements, element) {
  */
 function every(elements, element) {
 
+  let result = true;
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i] !== element) {
+      result = false;
+    }
+  }
+  return result;
 }
 
 /**
@@ -170,10 +177,59 @@ function reverseNumber(number) {
  * @param {string} original 
  * @param {string} sample 
  * @returns {boolean}  
+ * function isMisspelled(word1, word2) {
+  let result = false
+  for (let i = 0; i < word1; i++) {
+    const letter1 = word1[i].toLowerCase()
+      for (let j = 0; j < word2; i++) {
+        const letter2 = word2[i].toLowerCase()
+        
+        if (letter1 === letter2) {
+          result = true
+        } else if (letter1 !== letter2 && letter1.length === letter2.length) {
+          result = true
+        } else if (letter1[0] !== letter2[0] || letter2[0] !== letter1[0] && letter1.length === letter2.length) {
+          result = true
+        } else if (letter1[letter1.length - 1] !== letter2[letter2.length - 1] && letter1.length === letter2.length) {
+          result = true
+        } else {
+          result = false
+        }
+  }
+ }
+  return result
+}
  */
 function isMisspelled(original, sample) {
 
-}
+  const result = false
+  const word1Len = word1.length
+  const word2Len = word2.length
+
+  let difference = Math.abs(word1Len - word2Len)
+
+  if (word1 === word2) {
+    return true
+  } else if (difference > 1) {
+    return false
+  } else {
+
+    let countMisses = 0
+
+    for (let i = 0; i < word1Len; i++) {
+      for (let j = 0; j < word2Len; i++) {
+        
+        }
+      }
+      if (countMisses > 1) {
+        result = false
+      }
+
+    }
+  }
+
+
+
 
 /**
  * hello world => Hello World
