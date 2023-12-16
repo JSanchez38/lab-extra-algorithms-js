@@ -150,9 +150,9 @@ function scrambleIt(word, positions) {
  * 12345 => 54321
  * 34 => 43
  * @param {number} number 
- * @returns {number}  
- */
-function reverseNumber(number) {
+ * @returns {number}
+ *
+ function reverseNumber(number) {
 
   let result = ""
   
@@ -160,9 +160,18 @@ function reverseNumber(number) {
     result += number[i]
     
   }
-  return result
+  return Number(result) 
 }
+*/
+function reverseNumber(number) {
+  number = "${number}"
 
+  let reversed = ""
+  for (let i = number.length - 1; i >= 0; i--) {
+    reversed += number[i]
+  }
+  return parseInt(reversed)
+}
 
 /**
  * 
@@ -176,7 +185,8 @@ function reverseNumber(number) {
  * 
  * @param {string} original 
  * @param {string} sample 
- * @returns {boolean}  
+ * @returns {boolean} 
+ *  
  * function isMisspelled(word1, word2) {
   let result = false
   for (let i = 0; i < word1; i++) {
@@ -201,32 +211,32 @@ function reverseNumber(number) {
 }
  */
 function isMisspelled(original, sample) {
+  let result = false
+  if (original.length === sample.length) {
+    let diff = 0
+    
+    let i = 0
+    while (diff < 2 && i < original.length) {
+      const originalChar = original[i]
+      const sampleChar = sample[i]
 
-  const result = false
-  const word1Len = word1.length
-  const word2Len = word2.length
-
-  let difference = Math.abs(word1Len - word2Len)
-
-  if (word1 === word2) {
-    return true
-  } else if (difference > 1) {
-    return false
-  } else {
-
-    let countMisses = 0
-
-    for (let i = 0; i < word1Len; i++) {
-      for (let j = 0; j < word2Len; i++) {
-        
-        }
+      if (originalChar !== sampleChar) {
+        diff++
       }
-      if (countMisses > 1) {
-        result = false
-      }
-
+      i++
     }
+    result = diff < 2
+  } else if (Math.abs(original.length - sample.length) === 1) {
+    if (original.length > sample.length) {
+      result = original.includes(sample)
+    } else {
+      result = sample.includes(original)
+    }
+  } else {
+    result = false
   }
+  return result
+}
 
 
 
@@ -234,9 +244,9 @@ function isMisspelled(original, sample) {
 /**
  * hello world => Hello World
  * this is a sentence => This is a Sentence
- * @param {*} sentence 
+ * @param {string} sentence 
  * @returns {string}  
- */
+
 
 function capitalize(sentence) {
   let noSpaces = sentence.split(" ")
@@ -252,6 +262,21 @@ function capitalize(sentence) {
     }
   }
   return result.trim()
+ }
+ */
+ function capitalize(sentence) {
+  const words = sentence.split(" ")
+  const capitalizedWords = []
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i]
+    if (word.length > 3) {
+      const capitalized = word[0].toLocaleUpperCase() + word.substring(1)
+      capitalizedWords.push(capitalized)
+    } else {
+      const loweralized = (word.length > 1) ? word[0].toLowerCase() +  
+    }
+  }
+  return capitalizedWords.join(" ")
  }
 
 
@@ -276,30 +301,39 @@ console.log(containsAllVowels("ealliuo"))
  * Count how many sheep there are in array (ignoring cases).
  * If there are a wolf in the array then a poor sheep will die, but if there are a dog then the wolf can't kill a sheep.
  * ['sheep', 'wolf', 'dog', 'ShEep'] => 2
- * ['sheep', 'wolf', 'wolf', 'dog'] => 1
+ * ['sheep', 'wolf', 'wolf', 'dog'] => 0
  * ['wolf', 'dog'] => 0
  * [] => 0
  * ['shep'] => 0
  * ['SHEEP', 'sheep', 'dog'] => 2
+ * ['sheep', 'wolf', 'wolf', 'dog'] => 0
  * @param {[string]} animals 
  * @returns {number}
  */
 function countSheep(animals) {
   
-  let count = 0
+  let sheep = 0
+  let wolves = 0
+  let dogs = 0
 
   for (let i = 0; i < animals.length; i++) {
-    const animal = animals[i]
+    const animal = animals[i].toLowerCase()
 
-    if (animal === "sheep") {
-      count++
-    } else if (animal === "wolf") {
-      count--
-    } else if (animal === "dog" && animal === "wolf") {
-      return count
-    } else {
-      return count
+    switch (animal) {
+      case "sheep":
+        sheep++
+        break;
+        case "wolf":
+          wolves++
+        break;
+        case "dog":
+          dogs++
+        break;
     }
   }
-  return count
+  if (wolves > dogs) {
+    return Math.max(sheep - (wolves - dogs), 0)
+  } else {
+    return sheep
+  }
 }
