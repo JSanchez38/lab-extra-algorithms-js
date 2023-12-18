@@ -315,7 +315,7 @@ function countSheep(animals) {
   let sheep = 0
   let wolves = 0
   let dogs = 0
-
+  
   for (let i = 0; i < animals.length; i++) {
     const animal = animals[i].toLowerCase()
 
@@ -336,4 +336,29 @@ function countSheep(animals) {
   } else {
     return sheep
   }
+}
+
+
+
+/**
+ * [1, -1] => 1
+ * [1, -1, -1, 2] => 3
+ * [-1, -1, -2] => 0
+ * @param {[number]} numbers 
+ * @returns {[numbers]}
+ */
+function sumPositives(numbers) {
+
+}
+
+
+/**
+ * [1, -1] => [-1, 1]
+ * [1, -1, -1, 2] => [-1, 1, 1, -2]
+ * [-1, -1, -2] => [1, 1, 2]
+ * @param {[number]} numbers 
+ * @returns {[numbers]}
+ */
+function invert(numbers) {
+
 }
