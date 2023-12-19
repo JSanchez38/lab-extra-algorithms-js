@@ -348,7 +348,16 @@ function countSheep(animals) {
  * @returns {[numbers]}
  */
 function sumPositives(numbers) {
+  let result = 0
 
+  for (let i = 0; i < numbers.length; i++) {
+    number = numbers[i]
+
+    if (number > 0) {
+      result += number
+    }
+  }
+  return result
 }
 
 
@@ -360,5 +369,11 @@ function sumPositives(numbers) {
  * @returns {[numbers]}
  */
 function invert(numbers) {
+  let arr = []
 
+  for (let i = 0; i < numbers.length; i++) {
+    number = numbers[i]
+    arr.push(number * -1)
+  }
+  return arr
 }
